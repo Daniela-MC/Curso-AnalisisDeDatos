@@ -10,7 +10,7 @@ Resources:
   S3DemoStepFunction:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: s3-demo-stepfunction
+      BucketName: s3-demo-stepfunction-daniela
 
   # --------------------------------------------------------------------------
   # 2. Roles e IAM Policies
@@ -39,7 +39,7 @@ Resources:
                 Action:
                   - s3:PutObject
                 Resource:
-                  - !Sub "arn:aws:s3:::s3-demo-stepfunction/*"
+                  - !Sub "arn:aws:s3:::s3-demo-stepfunction-daniela/*"
 
   # Role para la Step Function: solo puede invocar las dos Lambdas
   StateMachineRole:
@@ -93,7 +93,7 @@ Resources:
 
               # Escribir en S3 en carpeta raw/
               s3 = boto3.client('s3')
-              bucket_name = "s3-demo-stepfunction"
+              bucket_name = "s3-demo-stepfunction-daniela"
               key = "raw/data.json"
 
               s3.put_object(
@@ -134,7 +134,7 @@ Resources:
 
           def lambda_handler(event, context):
               # 'event' es la lista de registros recibidos de la primer lambda.
-              bucket_name = "s3-demo-stepfunction"
+              bucket_name = "s3-demo-stepfunction-daniela"
               key = "result/data.csv"
 
               # Convertir el contenido a CSV
