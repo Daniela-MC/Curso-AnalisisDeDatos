@@ -81,11 +81,11 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs:
-            VolumeSize: 50
+            VolumeSize: 10
             DeleteOnTermination: true 
         - DeviceName: /dev/sdf
           Ebs:
-            VolumeSize: 120
+            VolumeSize: 20
             DeleteOnTermination: true
       IamInstanceProfile: !Ref rInstanceProfile
       ImageId: ami-051f8a213df8bc089
